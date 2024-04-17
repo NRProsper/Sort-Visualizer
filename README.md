@@ -1,16 +1,10 @@
-# sorting-visualizer
+# Sorting-visualizer
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This project is a sorting visualizer that provides a graphical representation of various sorting algorithms.
 
 ## Project Setup
+
+To set up this project locally on your computer, follow these steps:
 
 ```sh
 npm install
