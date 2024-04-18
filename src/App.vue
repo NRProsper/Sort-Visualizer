@@ -6,8 +6,10 @@ import SortingComponent from "@/components/SortingComponent.vue";
 <template>
 <div>
   <Header />
-  <main class="mt-[60px] relative h-[calc(100vh-60px)] flex items-center justify-center p-[80px]">
-    <SortingComponent />
+  <main class="h-[800px]">
+    <div class="flex relative mt-[60px] h-full items-center justify-center p-[80px]">
+      <SortingComponent />
+    </div>
   </main>
 </div>
 </template>
@@ -24,4 +26,6 @@ import SortingComponent from "@/components/SortingComponent.vue";
   //position: absolute;
   //top: 0;
 }
+
+
 </style>

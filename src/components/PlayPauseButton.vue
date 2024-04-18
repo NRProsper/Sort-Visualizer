@@ -1,16 +1,19 @@
 <script setup>
+import {ref} from "vue";
 import Play from 'vue-material-design-icons/Play.vue'
 import Pause from 'vue-material-design-icons/Pause.vue'
-import {ref} from "vue";
+import {usePlayOrPause} from "@/stores/playOrPause.js";
 
-const isPaused = ref(true)
+const playOrPause = new usePlayOrPause();
+
+
 
 </script>
 
 <template>
 
-  <button class="rounded-full bg-blue-500 flex items-center justify-center" @click="isPaused =! isPaused">
-    <Play  v-if="isPaused" :size ="30" fill-color="white" />
+  <button class="p-[3px] rounded-full bg-blue-500 hover:bg-blue-700 transition-all flex items-center justify-center" @click="playOrPause.togglePayer">
+    <Play  v-if="playOrPause.isPaused" :size ="30" fill-color="white" />
     <Pause v-else :size ="30" fill-color="white" />
   </button>
 
