@@ -1,12 +1,10 @@
 <script setup>
-import { defineProps } from 'vue';
-
 const props = defineProps({
   height: {
     type: Number,
     required: true
   },
-  number: {
+  width: {
     type:Number,
     required:true
   },
@@ -20,7 +18,10 @@ const props = defineProps({
 <template>
   <div id="bar"
        class="rounded text-white text-[12px] w-[2px]  flex justify-center items-end"
-       :style="{height:`${height}px`}"
+       :style="{
+        height:`${height}px`,
+        width: `${width}px`
+          }"
        :class="{'bg-orange-500':checked, 'bg-blue-500':!checked}"
   />
 </template>

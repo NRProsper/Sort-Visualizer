@@ -1,16 +1,18 @@
 <script setup>
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 import SortingComponent from "@/components/SortingComponent.vue";
 </script>
 
 <template>
 <div>
   <Header />
-  <main class="h-[800px]">
+  <main class="h-[900px]">
     <div class="flex relative mt-[60px] h-full items-center justify-center p-[80px]">
       <SortingComponent />
     </div>
   </main>
+  <Footer />
 </div>
 </template>
 

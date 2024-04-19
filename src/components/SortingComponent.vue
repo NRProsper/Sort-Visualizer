@@ -14,7 +14,7 @@ const pauseOrPlay = usePlayOrPause();
 const array = ref([])
 
 
-onMounted(() => resetArray())
+onMounted(() => resetArray()) //Initialize the bars when the component is mounted in the DOM
 
 // Add a function to generate an array
 function resetArray() {
@@ -28,16 +28,21 @@ watch(() => sizeStore.size, (newSize) => {
   resetArray()
 })
 
-const randomIntFromInterval = (min, max) => Math.floor(Math.random()*(max - min + 1) + min);
+const randomIntFromInterval = (min, max) => Math.floor(Math.random()*(max - min + 1) + min); //From stackOverflow
+
+const barWidth = computed(()=> {
+  const availableWidth = 600
+  return availableWidth/sizeStore.size
+})
 
 
 
 </script>
 
 <template>
-  <div class="border border-slate-300 p-6 rounded-md shadow min-h-full shrink-0 w-full flex flex-col space-y-2 items-center justify-center">
-    <TransitionGroup name="visualizer" tag="div" class="relative flex items-end gap-[3px]">
-      <Bar v-for="(item, index) in array" :height="item" :number="item" :key="index"  />
+  <div class="border border-slate-300 p-6 rounded-md shadow min-h-full shrink-0 w-full flex flex-col space-y-4 items-center justify-center">
+    <TransitionGroup name="visualizer" tag="div" class="relative flex items-end gap-[3px] ">
+      <Bar v-for="(item, index) in array" :height="item" :width="barWidth" :key="item"  />
     </TransitionGroup>
     <button class="py-1 px-4 bg-blue-500 hover:bg-blue-700 transition-all rounded-md" @click="resetArray">
       <Shuffle fill-color="#fff" :size="25" />
@@ -59,7 +64,13 @@ const randomIntFromInterval = (min, max) => Math.floor(Math.random()*(max - min 
 .visualizer-enter-from,
 .visualizer-leave-to {
   opacity: 0;
-  transform: scaleY(0.01) translate(30px, 0);
+  transform: translate(2px, 0);
 }
+
+@media screen {
+  
+}
+
+
 
 </style>
