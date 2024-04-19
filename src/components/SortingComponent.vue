@@ -10,62 +10,38 @@ const sizeStore = useSizeStore();
 const pauseOrPlay = usePlayOrPause();
 
 
-const getInitialItems = () => [80, 20, 100, 110, 90, 70, 60, 50, 30, 40];
-const items = ref(getInitialItems())
 
-function shuffle ()  {
-  items.value = _shuffle(items.value)
-}
+const array = ref([])
 
-let i;
-let j;
-let sortingTimeout;
 
-function bubbleSort() {
-  const arr = [...items.value];
-  const len = arr.length;
-  let swapped;
+onMounted(() => resetArray())
 
-  i = 0;
-  j = 0;
-
-  const animateSort = () => {
-    if (i < len - 1) {
-      if (j < len - i - 1) {
-        if (arr[j] > arr[j + 1]) {
-          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-          items.value = [...arr]; // Update items after each swap
-        }
-        j++;
-      } else {
-        j = 0;
-        i++;
-      }
-      sortingTimeout = setTimeout(animateSort, 100); // Adjust the delay as needed
-    }
-  };
-
-  animateSort();
-}
-
-watch(()=>pauseOrPlay.isPaused, (newValue)=>{
-  if(!newValue) {
-    bubbleSort()
-  }else {
-    clearTimeout(sortingTimeout)
+// Add a function to generate an array
+function resetArray() {
+  array.value = []
+  for(let i = 0; i < sizeStore.size; i++) {
+    array.value.push(randomIntFromInterval(5, 500))
   }
+}
+
+watch(() => sizeStore.size, (newSize) => {
+  resetArray()
 })
+
+const randomIntFromInterval = (min, max) => Math.floor(Math.random()*(max - min + 1) + min);
+
+
 
 </script>
 
 <template>
-  <div class="border border-slate-300 p-6 rounded-md shadow min-h-full shrink-0 w-full flex items-center justify-center">
-<!--    <button @click="shuffle">-->
-<!--      <Shuffle fill-color="#333" :size="25" />-->
-<!--    </button>-->
-    <TransitionGroup name="visualizer" tag="div" class="relative flex items-end gap-2">
-      <Bar v-for="(item, index) in items" :height="item" :number="item" :key="item" :checked="index === j || index + 1 === j" />
+  <div class="border border-slate-300 p-6 rounded-md shadow min-h-full shrink-0 w-full flex flex-col space-y-2 items-center justify-center">
+    <TransitionGroup name="visualizer" tag="div" class="relative flex items-end gap-[3px]">
+      <Bar v-for="(item, index) in array" :height="item" :number="item" :key="index"  />
     </TransitionGroup>
+    <button class="py-1 px-4 bg-blue-500 hover:bg-blue-700 transition-all rounded-md" @click="resetArray">
+      <Shuffle fill-color="#fff" :size="25" />
+    </button>
   </div>
 </template>
 

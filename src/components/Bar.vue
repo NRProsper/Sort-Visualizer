@@ -19,12 +19,10 @@ const props = defineProps({
 
 <template>
   <div id="bar"
-       class="rounded text-white text-[12px] w-[40px]  flex justify-center items-end"
+       class="rounded text-white text-[12px] w-[2px]  flex justify-center items-end"
        :style="{height:`${height}px`}"
        :class="{'bg-orange-500':checked, 'bg-blue-500':!checked}"
-  >
-    {{ number }}
-  </div>
+  />
 </template>
 
 <style scoped>

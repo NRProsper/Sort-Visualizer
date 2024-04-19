@@ -31,7 +31,7 @@ function handleSizeChange(event) {
 
     <label class="block">
       <span class="block">Size: {{ sizeStore.size }}</span>
-      <input v-model="sizeStore.size"  @input="handleSizeChange" type="range" min="10" max="50">
+      <input v-model="sizeStore.size"  @input="handleSizeChange" type="range" min="50" max="300">
     </label>
 
   </div>
