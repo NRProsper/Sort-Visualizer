@@ -34,7 +34,7 @@ function handleSizeChange(event) {
       <input
           v-model="sizeStore.size"
           @input="handleSizeChange"
-          type="range" min="50" max="300"
+          type="range" min="10" max="300"
           class="w-[150px] h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
       >
     </label>
